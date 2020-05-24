@@ -1,0 +1,72 @@
+1. Вывести список сотрудников, получающих максимальную заработную плату в своем отделе
+
+SELECT e.id, e.Name, e.Salary, e.department_id FROM Employee As e 
+JOIN (SELECT MAX(t.Salary) As MaxSalary, t.department_id FROM Employee As t GROUP BY t.department_id) As m 
+ON e.department_id = m.department_id  
+WHERE e.Salary = m.MaxSalary 
+ORDER BY e.department_id, e.Name;
+
+
+***************************************************************
+2. Вывести список ID отделов, количество сотрудников в которых не превышает 3 человек
+
+SELECT e.department_id, COUNT(*) AS total_empl FROM Employee AS e 
+GROUP BY e.department_id 
+HAVING COUNT(*) <= 3;
+
+
+***************************************************************
+3. Найти список ID отделов с максимальной суммарной зарплатой сотрудников
+
+SELECT e.department_id, SUM(e.Salary) As SUMSalary FROM Employee As e 
+GROUP BY e.department_id 
+HAVING SUMSalary = (
+SELECT MAX(SUMSalary) FROM 
+(SELECT SUM(t.Salary) As SUMSalary FROM Employee As t GROUP BY t.department_id)
+) ORDER By e.SUMSalary;
+
+
+***************************************************************
+4. Добавить в БД новый отдел
+
+1) Если ID поле авто-инкремент
+
+INSERT INTO Department (name)
+VALUES ('Development');
+
+2) Если ID поле не авто-инкремент
+
+INSERT INTO Department (id, name)
+VALUES (1000, 'Development');
+
+
+***************************************************************
+5. Добавить в новый отдел троих новых сотрудников и одного руководителя (с учетом заполнения всех полей)
+
+Если ID поле авто-инкремент
+
+INSERT INTO Employee (department_id, chief_id, name, salary)
+VALUES (1000, 111, 'Иванов', 1000);
+INSERT INTO Employee (department_id, chief_id, name, salary)
+VALUES (1000, 111, 'Петров', 2000);
+INSERT INTO Employee (department_id, chief_id, name, salary)
+VALUES (1000, 111, 'Сидоров', 1500);
+
+2) Если ID поле не авто-инкремент, то добавляем значение поле ID и его значение к каждой новой записи.
+
+
+***************************************************************
+6. Удалить отдел и всех сотрудников, привязанных к этому отделу
+
+
+DELETE FROM Employee WHERE department_id=1000;
+
+DELETE FROM Department WHERE id=1000;
+
+***************************************************************
+7. Обновить ID любого отдела так, чтобы “не потерять” работающих в нем сотрудников
+
+Создать временный отдел, привязать все записи с обновляемого отдела в этот временный отдел.
+Обновить ID обновляемого отдела.
+Привязать все прежние записи обратно с временного отдела на обновленный отдел.
+Удалить временный отдел.
