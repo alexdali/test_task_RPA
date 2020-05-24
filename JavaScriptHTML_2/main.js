@@ -24,7 +24,7 @@ const createFigure = (height, templateSpan, color) => {
   for (let x = 0; x < 3; x++) {
     for (let i = 1; i < height/3; i++) {
       let rowEl = templateSpan(color[x], arrCh);
-      figure.insertAdjacentHTML('afterbegin', rowEl);
+      figure.insertAdjacentHTML('beforeend', rowEl);
     }
   }
 }
