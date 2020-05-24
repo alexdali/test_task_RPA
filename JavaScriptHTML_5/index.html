@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>task 4</title>
+  </head>
+  <body>
+    <form id="form" class="form">
+      <h3>Контактные данные</h3>
+      <div class="control">
+        <label for="fullname">Введите ФИО</label>
+        <input type="text" id="fullname" placeholder="ФИО" />
+      </div>
+      <div class="control">
+        <label for="phone1">Введите телефон</label>
+        <input type="text" id="phone1" placeholder="телефон" />
+        <button type="button" id="addField">
+          +
+        </button>
+      </div>
+      <div class="control">
+        <label for="comment">Введите комментарий</label>
+        <input type="text" id="comment" placeholder="комментарий" />
+      </div>
+      <button type="submit">
+        Отправить
+      </button>
+    </form>
+    <button type="button" id="sendBtn">
+      Send
+    </button>
+    <script src="main.js"></script>
+  </body>
+</html>

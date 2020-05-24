@@ -1,9 +1,15 @@
+/**
+ * Построить web-форму для отправки контактных данных, состоящую из полей:
+ * ФИО
+ * Телефон
+ * Комментарий
+ */
 const form = document.getElementById('form');
 const fullname = document.getElementById('fullname');
 const phone = document.getElementById('phone');
 const comment = document.getElementById('comment');
 
-// event listeners
+// submit data form
 form.addEventListener('submit', function(e) {
   e.preventDefault();
    alert(

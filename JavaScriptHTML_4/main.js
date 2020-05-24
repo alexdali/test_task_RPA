@@ -1,3 +1,8 @@
+/**
+ * Улучшить форму контактных данных:
+ * По нажатию на кнопку будет добавляться еще одно поле “Телефон N”
+ * Кнопка “+” после добавления нового поля должна переместиться на позицию справа от нового поля
+ */
 const form = document.getElementById('form');
 const fullname = document.getElementById('fullname');
 const phone = document.getElementById('phone');
