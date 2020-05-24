@@ -26,7 +26,7 @@ const sortArray = (arr, mode) => {
   }
   return arr;
 }
-let sortedArr = [];
-let arr = [7, 9, 5, 3, 1, 2, 3,2,1, -1, -100];
-sortedArr = sortArray(arr, "desc");
-console.log(sortedArr);
+// let sortedArr = [];
+// let arr = [7, 9, 5, 3, 1, 2, 3,2,1, -1, -100];
+// sortedArr = sortArray(arr, "desc");
+// console.log(sortedArr);
